@@ -3,6 +3,7 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
+const textArea = document.getElementById('textarea')
 
 let loadInterval;
 
@@ -86,9 +87,8 @@ const handleSubmit = async(e) => {
   if (response.ok) {
     const data = await response.json();
     const parsedData = data.bot.trim();
-
-    console.log(parsedData);
     typeText(messageDiv, parsedData);
+    textArea.setAttribute('disabled', 'disabled')
 
   }else {
     const err = await response.text();
@@ -96,7 +96,9 @@ const handleSubmit = async(e) => {
     messageDiv.innerHTML = "something went wrong"
     alert(err);
   }
+  textArea.removeAttribute('disabled')
 }
+
 
 
 form.addEventListener('submit', handleSubmit);

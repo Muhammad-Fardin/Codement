@@ -15,7 +15,7 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor directories and filesgit push -u origin main
 .vscode/*
 !.vscode/extensions.json
 .idea
